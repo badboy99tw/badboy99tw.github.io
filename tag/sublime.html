@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>盒仔內 ê 時間 - Sublime</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://badboy99tw.github.io/安裝 Windows 版 pylint 和 Sublime Pylinter.html">安裝 Windows 版 pylint 和 Sublime Pylinter</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-08-01T16:50:00+08:00">
+                Published: Fri 01 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/windows.html">Windows</a> <a href="https://badboy99tw.github.io/tag/pylint.html">Pylint</a> <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> </p>
+</footer><!-- /.post-info --><p>最近在整理寫程式的環境，打算使用 Sublime 下的 <a href="https://sublime.wbond.net/packages/Pylinter">Pylinter</a> 和 <a href="https://sublime.wbond.net/packages/Python%20PEP8%20Autoformat">Python PEP8 Autoformat</a> 做程式碼的規範。但因為工作環境已經把 python 執行檔及 modules 分開了，所以預設的安裝方式及設定是無法使用的，Pylinter 會找不到 python 執行檔跟 pylint，只好手動安裝。</p>
+<h2>安裝 pylint / Sublime Pylinter</h2>
+<ol>
+<li>安裝 pylint 和需要用到的 modules<ul>
+<li><a href="https://pypi.python.org/pypi/pylint">pylint</a></li>
+<li><a href="https://pypi.python.org/pypi/logilab-common">logilab-common</a></li>
+<li><a href="https://pypi.python.org/pypi/astroid">astroid</a></li>
+</ul>
+</li>
+<li>安裝 <a href="https://sublime.wbond.net/packages/Pylinter">Pylinter</a></li>
+<li>修改 Pylinter 設定</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python_bin&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/python.exe&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;python_path&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;/path/to/pylint&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/path/to/logilab-common&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/path/to/astroid&quot;</span><span class="p">],</span>
+    <span class="nt">&quot;pylint_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/pylint/lint.py&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>目前已知問題是 Pylinter 抓不到 pylint 的版本，可能要 trace code 研究一下，但執行起來好像沒什麼問題。</p>
+<h2>Pylinter 其他設定</h2>
+<ul>
+<li>verbose<ul>
+<li>開啟後 console 會印出 pylint 執行的訊息，可惜的是打分數那段沒看到，不知道為什麼。</li>
+</ul>
+</li>
+<li>use_icons<ul>
+<li>開啟後 sublime 左邊顯示 error 的圖案會因檢查的結果有所差別，不開的話就只是個白點。</li>
+</ul>
+</li>
+<li>run_on_save<ul>
+<li>開啟後每次存檔會跑 pylint，其實有點花時間，建議手動執行 Pylinter 就好。</li>
+</ul>
+</li>
+</ul>
+<h2>Pylinter 熱鍵</h2>
+<ul>
+<li>ctrl+alt+z<ul>
+<li>執行 Pylinter</li>
+</ul>
+</li>
+<li>ctrl+alt+x<ul>
+<li>開啟 / 關閉 Pylinter 結果</li>
+</ul>
+</li>
+<li>ctrl+alt+c<ul>
+<li>條列 Pylinter 結果</li>
+</ul>
+</li>
+<li>ctrl+alt+i<ul>
+<li>忽略游標所在該行的錯誤</li>
+</ul>
+</li>
+</ul>
+<p>附帶一提，只有 ctrl+alt+z 會重跑 Pylinter，其他熱鍵只會改變顯示方式。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html" rel="bookmark"
+                           title="Permalink to 從 Sublime 傳送 Python Code 到 Maya 執行">從 Sublime 傳送 Python Code 到 Maya 執行</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-03T16:15:00+08:00">
+                Published: Thu 03 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> </p>
+</footer><!-- /.post-info -->                <p>在 Maya 寫 Python 程式的派別不外乎：</p>
+<ul>
+<li>
+<p>Script Editor 派</p>
+<ul>
+<li>打開 Maya 的 Script Editor，直接寫直接跑</li>
+</ul>
+</li>
+<li>
+<p>其他文字編輯器派（vim、sublime、eclipse 等等）</p>
+<ul>
+<li>透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。</li>
+</ul>
+</li>
+</ul>
+<p>如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

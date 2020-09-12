@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>盒仔內 ê 時間 - badboy99</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://badboy99tw.github.io/Facebook 後端登入流程.html">Facebook 後端登入流程</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-05-20T12:00:00+08:00">
+                Published: Mon 20 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/facebook-login.html">Facebook Login</a> </p>
+</footer><!-- /.post-info --><p>參考官方文件 <a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow/">Manually Build a Login Flow</a>，用 Python 實作使用者從前端按下登入按鈕，跳出 Facebook Login Dialog 確認授權後，前端再打後端 api，讓後端取得 access token，完成登入流程。</p>
+<p>完整程式碼在 <a href="https://github.com/badboy99tw/demo-facebook-login-in-backend">這邊</a>。</p>
+<p>幾個重點：</p>
+<ul>
+<li>前端要有地方可以跳出 Facebook Login Dialog</li>
+<li>前端實作 redirect api，讓 Facebook 授權成功後打回來</li>
+<li>後端實作 login api，讓前端拿到授權成功的 code 後可以打</li>
+<li>前端要處理 CSRF Token</li>
+</ul>
+<p>目前還沒處理 CSRF Token，但只是 demo 的話好像也不需要，有空再說吧。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/全民台語認證準備心得.html" rel="bookmark"
+                           title="Permalink to 全民台語認證準備心得">全民台語認證準備心得</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-07-26T12:00:00+08:00">
+                Published: Thu 26 July 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/taiwaness.html">Taiwaness</a> <a href="https://badboy99tw.github.io/tag/poj.html">POJ</a> </p>
+</footer><!-- /.post-info -->                <p>本來只打算分享今年考 <a href="http://ctlt.twl.ncku.edu.tw/gtpt/index.html">全民台語認證</a> 的心得，但因為我準備期太短了，不把過去的成長背景放進來看，會覺得這成績太扯，所以就一起寫吧！</p>
+<h2>成績</h2>
+<ul>
+<li>閱讀：140/180</li>
+<li>聽力：96/120</li>
+<li>聽寫：77/80</li>
+<li>口語：86/120</li>
+<li>總分：399/500</li>
+</ul>
+<p>級數：C1</p>
+<h2>背景</h2>
+<p>我出生在全母語家庭，唸書前應該是用台語在想事情，小時候聽非常多台語老歌，也聽很多伍佰的歌。因為學習管道除了父母外就是台語歌，所以我的腔調其實是混雜的，甚至有些唸錯的音我都可以跟你說是從哪一首歌學的。</p>
+<p>到學校唸書後台語能力就開始下滑，我卻不自知，一直到當兵發現自己無法用台語講出一個完整的句子，才意識到事情的嚴重性，到現在我都還記得那個支支吾吾的場景，覺得該用台語回應別人，但卻嚴重失語的窘境。</p>
+<p>工作幾年後認識 <a href="https://www.tgb.org.tw/">李江卻台語文教基金會</a> 的陳豐惠老師，學會了白話字，之後偶而會在電腦上用 <a href="https://taigi.fhl.net/TaigiIME/">信望愛輸入法</a>、或在手機上用 <a href="https://play.google.com/store/apps/details?id=com.taccotap.phahtaigi&amp;hl=zh_TW">Phah Tâi-gí 台語輸入法 …</a></p>
+                <a class="readmore" href="https://badboy99tw.github.io/全民台語認證準備心得.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/一个軟體工程師佇農村 ê 見聞.html" rel="bookmark"
+                           title="Permalink to 一个軟體工程師佇農村 ê 見聞">一个軟體工程師佇農村 ê 見聞</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-10-17T12:00:00+08:00">
+                Published: Tue 17 October 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/talk.html">Talk</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/farming.html">Farming</a> </p>
+</footer><!-- /.post-info -->                <p>2017 年在 PyCon Taiwan 和 COSCUP 的分享</p>
+<p><a href="https://hackmd.io/p/Hyzjn1FGb#/">投影片</a></p>
+                <a class="readmore" href="https://badboy99tw.github.io/一个軟體工程師佇農村 ê 見聞.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/每個人都可以出一份力.html" rel="bookmark"
+                           title="Permalink to 每個人都可以出一份力">每個人都可以出一份力</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-16T08:40:00+08:00">
+                Published: Sat 16 January 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/life.html">Life</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/taiwan.html">Taiwan</a> <a href="https://badboy99tw.github.io/tag/vote.html">Vote</a> </p>
+</footer><!-- /.post-info -->                <p>大五那年重考，說重考只是謙虛，其實前一年忙著重修根本也沒考。總之過完大學最後的暑假，我開始每天跑圖書館，過著偶爾去一樓公用電腦偷上 PTT、不然就躲在廁所偷看小說的生活。</p>
+<p>圖書館的廁所其實蠻沒公德心的，很多人帶書進去看又不拿走，不過也因為這樣，我就不用帶書進去看，也不用背負這個罪孽。</p>
+<p>印象中有一本書，書名忘記了，只記得裡面寫了很多台灣年輕人出國唸書，在海外搞台獨運動的過程跟生活的困難，最後還因為被國民黨列入黑名單，連父母過世都沒辦法回來奔喪。</p>
+<p>當時我處在準備考試的關頭，想到有這麼多台灣人好不容易出國唸書，似乎有美好前程在等著他們，卻還堅持著為這個餵養他們的土地打拼，心情上有些共鳴。</p>
+<p>我幾乎是哭著看完那本書的。</p>
+<p>這件事沒有影響我太多，我還是當個死研究生、當兵、工作。對政治現狀多少帶點憤怒，但我不知道我能做什麼，只記得都要去投票。
+前幾年從反媒體壟斷開始，我試著到現場關心。我知道我會生氣，但是我不太明白源頭是什麼，只是一直搞不懂，這些國民黨政客的行為模式為什麼跟我想的完全不一樣？</p>
+<blockquote>
+<p>直到後來的 318 學運，聽到「殖民統治」這四個字，我才恍然大悟。</p>
+</blockquote>
+<p>為什麼有那麼多中山路、中正路，為什麼中正紀念堂要改成自由廣場，為什麼小時候作業簿後面要寫「做個堂堂正正的中國人 …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/每個人都可以出一份力.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/《還有一點時間》.html" rel="bookmark"
+                           title="Permalink to 《還有一點時間》">《還有一點時間》</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-01-12T14:47:00+08:00">
+                Published: Tue 12 January 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/creation.html">Creation</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/poem.html">Poem</a> </p>
+</footer><!-- /.post-info -->                <p><img alt="" src="https://badboy99tw.github.io/images/《還有一點時間》/cover.jpg"></p>
+<div class="highlight"><pre><span></span>生命裂成兩塊
+一塊給你 一塊給我
+
+期待被安撫只是一種逃離
+喝酒終將埋葬陽光
+
+藏起畏懼與不安
+面對遙控
+面對死亡
+我該帶誰寫出這個世界
+唱著不放棄的音樂
+
+然後
+
+埋葬藍色的異端
+
+望向那些未盡的夢
+</pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/《還有一點時間》.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/2015 閱讀回顧.html" rel="bookmark"
+                           title="Permalink to 2015 閱讀回顧">2015 閱讀回顧</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-30T08:26:00+08:00">
+                Published: Wed 30 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/reading.html">Reading</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/review.html">Review</a> <a href="https://badboy99tw.github.io/tag/2015.html">2015</a> </p>
+</footer><!-- /.post-info -->                <p>今年九月開始，因為關注<a href="https://zh.wikipedia.org/zh-tw/%E5%8F%8D%E9%AB%98%E4%B8%AD%E8%AA%B2%E7%B6%B1%E5%BE%AE%E8%AA%BF%E9%81%8B%E5%8B%95">反高中課綱微調運動</a>，我打算比較扎實地彌補自己對台灣歷史的空白，沒想到卻意外地重新找回閱讀的樂趣。就這樣一本接一本，一邊汗顏自己思想的貧瘠，一邊也享受著各種觀念衝擊跟視野開拓的快樂。</p>
+<p>我都是帶著目的在看書，還不太能享受純粹閱讀的快感。現在閱讀的步調也太快了，其實很多書都值得一看再看，但因為還在彌補過去十幾年的思考跟閱讀斷層，所以就先隨性吧！以下依照當初選書的目的跟脈絡，簡單記錄一下書單：</p>
+<h2>想知道該怎麼看書</h2>
+<ul>
+<li><strong>《如何閱讀一本書》</strong>教導讀者如何培養從基礎閱讀（看懂字句）、檢視閱讀（了解大綱）到分析閱讀（理解旨意）和主體閱讀（比較異同、提出看法）的能力。</li>
+<li>《何謂歷史》</li>
+<li>《越讀者》</li>
+</ul>
+<h2>想了解台灣史</h2>
+<ul>
+<li><strong>《少年台灣史》</strong>這本書盡量用簡單而且不同角度的觀點來寫台灣史，每章結尾的提問也都發人省思，很適合作為台灣史的起步。</li>
+<li><strong>《音樂台灣》</strong>介紹從日治時期到戒嚴後、可以反應台灣社會狀況的歌和創作背景，例如日治時期自由戀愛的《望春風》、二二八後希望族群和諧的《杯底不可飼金魚》和描寫台灣命運的《舞女》。</li>
+<li>《噍吧哖一九一五》</li>
+<li>《消失的四零年代-造飛機的小孩們》</li>
+<li>《台灣歷史圖說》</li>
+</ul>
+<h2>想知道國民黨和共產黨有多討厭</h2>
+<ul>
+<li><strong>《被出賣的台灣》</strong>，美國人記錄下的國民黨接收台灣的歷史 …</li></ul>
+                <a class="readmore" href="https://badboy99tw.github.io/2015 閱讀回顧.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/《回家》.html" rel="bookmark"
+                           title="Permalink to 《回家》">《回家》</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-21T21:22:00+08:00">
+                Published: Mon 21 December 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/life.html">Life</a>.</p>
+
+</footer><!-- /.post-info -->                <p><img alt="" src="https://badboy99tw.github.io/images/《回家》/cover.jpg"></p>
+<p>十八歲離家後，無論再來要去哪，總是帶著它。</p>
+<p>國一轉學前最後一天，從導師手上接過這個行李造型的存錢筒，當下不曉得是什麼含意。回家後，它就一直放在書桌旁的櫃子上。</p>
+<p>十八歲那年考上大學準備離家，整理行李時又看到它，拿在手上踮一踮重量，帶著一種即將流浪的心情，順手把它塞進紙箱裡。</p>
+<p>經過大學、研究所、當兵、工作，因為阿嬤過世，阿公來家裡住，我的房間變成阿公的房間。和家裡的聯繫也少了，常常回家只是吃頓飯，就急急忙忙地離開，最多最多，也只在客廳沙發睡一晚。</p>
+<p>我確確實實在流浪，帶著一袋行李和夢想。</p>
+<p>前幾年阿公過世，在我換工作的空檔，短暫地回家住一個半月。十幾年沒有自己的房間，回家的第一天，我把行李放回櫃子上，看著它，看著熟悉又陌生的書桌和床，看著衣櫃裡已經快從我記憶中消失的舊衣服。我在房間呆了一整個下午。</p>
+<p>最後我還是離開了，帶著我的夢想，但這次我留下它。</p>
+                <a class="readmore" href="https://badboy99tw.github.io/《回家》.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/《台灣大劫難》心得及摘要.html" rel="bookmark"
+                           title="Permalink to 《台灣大劫難》心得及摘要">《台灣大劫難》心得及摘要</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-11-17T00:23:00+08:00">
+                Published: Tue 17 November 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/reading.html">Reading</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/taiwan.html">Taiwan</a> </p>
+</footer><!-- /.post-info -->                <h2>前言</h2>
+<p>本書出版於 2009 年，當時袁洪冰預測 2012 年中共將統一台灣，也做了一連串的現況評估跟戰略分析。雖然因為中共在 2012 到 2014 年間內部發生政治鬥爭，無暇顧及台灣問題，導致統一的時程推遲，但大部分預言卻都逐一實現。</p>
+<p>先快速講一下心得：</p>
+<ul>
+<li>國民黨不是主要敵人，共產黨才是。</li>
+<li>因為國民黨不是主要敵人，所以靠回顧過去來取得認同可能不是最好的方法，因為沒弄好的話會造成族群分裂，反而中了共產黨的計，但我覺得還是要做。</li>
+<li>應該要謀求台灣人共同的未來，對我來說其實就是台灣獨立建國，但要更具體，例如終結被連續殖民的命運、成為亞洲民主國家的典範、以正常的身分參與國際事務等等。</li>
+<li>或許講這些都太遠了，照最近上 Scrum 課的心得，趕快行動才是王道啊！</li>
+</ul>
+<p>在看這本書的摘要之前，先講袁紅冰當年的第一個建議好了。</p>
+<blockquote>
+<p>宣示願用台灣的自由、民主、人權和多元文化的立國之本，和平統一中國大陸；中國大陸政治民主化之日，就是兩岸以聯邦制為前提統一的程序起步之時。</p>
+</blockquote>
+<p>照袁紅冰的說法，這個宣示有以下好處：</p>
+<ul>
+<li>因為提出用自由、民主、人權和多元文化這些價值統一中國，可以化被動為主動。</li>
+<li>只有在中國人民從中共的政治奴隸變成自由人 …</li></ul>
+                <a class="readmore" href="https://badboy99tw.github.io/《台灣大劫難》心得及摘要.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/《惡童》讀書心得.html" rel="bookmark"
+                           title="Permalink to 《惡童》讀書心得">《惡童》讀書心得</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-12T01:15:00+08:00">
+                Published: Mon 12 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/reading.html">Reading</a>.</p>
+
+</footer><!-- /.post-info -->                <p>強烈建議這本書要一口氣讀完！</p>
+<blockquote>
+<p>我很久以前就知道，這一切都是了無意義的。可我現在才明白，事實上也沒有什麼是值得去努力爭取的。</p>
+<p>皮爾．安東</p>
+</blockquote>
+<p>這本拿到丹麥文化部最佳童書和法國最佳兒童小說獎的少年讀物，以這樣沈重的宣言起了頭，開啟了對意義的追逐，一場不知是否算是絕望的旅程。我甚至中途還將整本書拿起來打量，心想：</p>
+<p>書才看到一半就那麼重口味了，後面是要怎麼演？</p>
+<p>其實一直到劇情結束，我都還很懷疑為什麼這本書是少年讀物？總不能說主角是少年所以可以這樣分類吧？！但再想想，其實就是這個「沒有任何事具有任何意義」的問題，這個很早就該被提出來的問題，於我，還沒被充分解決，所以才害怕吧。</p>
+<p>我甚至在想，如果有個小朋友看完這本小說，拿著書中的問題來問我，我該怎麼回答？書本裡只提出這些艱難的問題，並沒有給出答案，甚至會讓你相信「充滿意義的事情，其實並沒有什麼意義」。</p>
+<p>劇情或許是虛構的，但彷彿似曾相識。</p>
+<p>當這些問題被直接了當的提出，好不容易快找到答案時，又被一記重拳反駁，讓你啞口無言，讓你相信「充滿意義的事情，其實並沒有什麼意義」。只有被徹底打倒，赤裸裸的面對內心，回答才有可能貼近本質。</p>
+<p>我想在這個情緒營造上，這本書是成功的。</p>
+<p>關於這個問題 …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/《惡童》讀書心得.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/《二十一世紀資本論》讀書心得.html" rel="bookmark"
+                           title="Permalink to 《二十一世紀資本論》讀書心得">《二十一世紀資本論》讀書心得</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-09T18:40:00+08:00">
+                Published: Fri 09 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/reading.html">Reading</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/das-kapital.html">Das Kapital</a> <a href="https://badboy99tw.github.io/tag/capital.html">Capital</a> <a href="https://badboy99tw.github.io/tag/capital-in-the-twenty-first-century.html">Capital in the Twenty-First Century</a> <a href="https://badboy99tw.github.io/tag/thomas-piketty.html">Thomas Piketty</a> </p>
+</footer><!-- /.post-info -->                <blockquote>
+<p>社會差距只能基於共同的福祉而存在</p>
+</blockquote>
+<p>這本 2013 年出版的書，試圖透過對過去一、兩百年政治、歷史及統計數據的回顧，提出財富分配不均的解決方法。</p>
+<p>這本書最難得的就是回顧過去各國的統計數據，並仔細分析各個面相的影響，不只是套套公式、打打嘴砲、提出一些狗屁不通的理論，所以非常推薦大家拿來翻一翻，然後想想台灣的未來。</p>
+<p>關於書中的種種描述和分析，如果只是簡記的話太武斷，詳記又變成抄書，所以我還是列幾個結論跟重點就好。</p>
+<p>再次強調，這本書很大部分的重點是對過去一、兩百年的觀察，但是我這邊都沒寫！</p>
+<h2>基本觀念</h2>
+<p>先定義幾個名詞跟公式~~，這段最無聊大家撐一下~~。</p>
+<ul>
+<li>國民所得：單一國家居民在一年內的所得總額（資本所得+勞務所得）。</li>
+<li>資本所得：例如利潤、利息、股利、租金、權利金。</li>
+<li>勞務所得：例如薪資、酬勞、紅利、獎金。</li>
+<li>國民資本：單一國家在某個當下所有居民與公部門所擁有、可在市場上進行交易之資本的市場總額。</li>
+<li>資本/所得比：國民資本/國民所得。即手頭上的資本是年所得的幾倍。</li>
+<li>資本所得佔比 …</li></ul>
+                <a class="readmore" href="https://badboy99tw.github.io/《二十一世紀資本論》讀書心得.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="https://badboy99tw.github.io/author/badboy992.html">&raquo;</a>
+        <a href="https://badboy99tw.github.io/author/badboy992.html">&#8649;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

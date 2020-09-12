@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>盒仔內 ê 時間 - Maya</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://badboy99tw.github.io/使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！.html">使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-09-24T17:58:00+08:00">
+                Published: Wed 24 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/mayapy.html">mayapy</a> <a href="https://badboy99tw.github.io/tag/mel.html">MEL</a> </p>
+</footer><!-- /.post-info --><p>以下是一個會把 mayapy 搞爛的例子。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.standalone</span>
+<span class="n">maya</span><span class="o">.</span><span class="n">standalone</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">loadPlugin</span><span class="p">(</span><span class="s1">&#39;Mayatomr&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<!--more-->
+
+<p>但是神奇的事情來了，只要我有先 import pymel，
+那之後再 load mentalray 就不會讓 mayapy 爛掉，
+所以一定是 pymel 裡面做了什麼事情！</p>
+<p>偷看一下原來是 pymel.internal.startup 裡面有個 initMEL 的 function，
+程式會 source 一些分布在 maya 安裝目錄和 prefs 底下做 startup 的 mel file。</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initMEL</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;PYMEL_SKIP_MEL_INIT&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">or</span> <span class="n">pymel_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skip_mel_init&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Skipping MEL initialization&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;initMEL&quot;</span><span class="p">)</span>
+    <span class="n">mayaVersion</span> <span class="o">=</span> <span class="n">versions</span><span class="o">.</span><span class="n">installName</span><span class="p">()</span>
+    <span class="n">prefsDir</span> <span class="o">=</span> <span class="n">getUserPrefsDir</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">prefsDir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="s2">&quot;could not initialize user preferences: MAYA_APP_DIR not set&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">prefsDir</span><span class="p">):</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="s2">&quot;could not initialize user preferences: </span><span class="si">%s</span><span class="s2"> does not exist&quot;</span> <span class="o">%</span> <span class="n">prefsDir</span><span class="p">)</span>
+
+    <span class="c1"># TODO : use cmds.internalVar to get paths</span>
+    <span class="c1"># got this startup sequence from autodesk support</span>
+
+    <span class="n">startup</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="c1"># &#39;defaultRunTimeCommands.mel&#39;,  # sourced automatically</span>
+        <span class="c1"># os.path.join( prefsDir, &#39;userRunTimeCommands.mel&#39;), # sourced</span>
+        <span class="c1"># automatically</span>
+        <span class="s1">&#39;createPreferencesOptVars.mel&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;createGlobalOptVars.mel&#39;</span><span class="p">,</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefsDir</span><span class="p">,</span> <span class="s1">&#39;userPrefs.mel&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">prefsDir</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s1">&#39;initialStartup.mel&#39;</span><span class="p">,</span>
+        <span class="c1">#$HOME/Documents/maya/projects/default/workspace.mel</span>
+        <span class="s1">&#39;initialPlugins.mel&#39;</span><span class="p">,</span>
+        <span class="c1"># &#39;initialGUI.mel&#39;, #GUI</span>
+        <span class="c1"># &#39;initialLayout.mel&#39;, #GUI</span>
+        <span class="c1"># os.path.join( prefsDir, &#39;windowPrefs.mel&#39;), #GUI</span>
+        <span class="c1"># os.path.join( prefsDir, &#39;menuSetPrefs.mel&#39;), #GUI</span>
+        <span class="c1"># &#39;hotkeySetup.mel&#39;, #GUI</span>
+        <span class="s1">&#39;namedCommandSetup.mel&#39;</span><span class="p">,</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefsDir</span><span class="p">,</span> <span class="s1">&#39;userNamedCommands.mel&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">prefsDir</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="c1"># &#39;initAfter.mel&#39;, #GUI</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefsDir</span><span class="p">,</span> <span class="s1">&#39;pluginPrefs.mel&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">prefsDir</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">startup</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;running: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                    <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Maya startup file </span><span class="si">%s</span><span class="s2"> does not exist&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># need to encode backslashes (used for windows paths)</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">unicode</span><span class="p">):</span>
+                        <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;string_escape&#39;</span>
+                    <span class="c1">#import pymel.core.language as lang</span>
+                    <span class="c1">#lang.mel.source( f.encode(encoding)  )</span>
+                    <span class="kn">import</span> <span class="nn">maya.mel</span>
+                    <span class="n">maya</span><span class="o">.</span><span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;source &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">f</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="s2">&quot;could not perform Maya initialization sequence: failed on </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># make sure it exists</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">maya</span><span class="o">.</span><span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;whatIs &quot;userSetup.mel&quot;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">:</span>
+            <span class="n">maya</span><span class="o">.</span><span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;source &quot;userSetup.mel&quot;&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;done running mel files&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>結論</h2>
+<p>不想 import 肥滋滋的 pymel 的話，直接幹上面這個 initMEL 來用就好，
+或是 import pymel.internal.startup 再執行 initMEL。</p>
+<p>更懶的話可以只 source 底下幾個 MEL file。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya</span>
+<span class="n">maya</span><span class="o">.</span><span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;source createPreferencesOptVars.mel&#39;</span><span class="p">)</span>
+<span class="n">maya</span><span class="o">.</span><span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;source createGlobalOptVars.mel&#39;</span><span class="p">)</span>
+<span class="n">maya</span><span class="o">.</span><span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;source initialStartup.mel&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>好久沒寫文章了，這篇又靠複製貼上弄得好像文章很長，
+似乎有點廢啊...</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html" rel="bookmark"
+                           title="Permalink to PyQt 或 PySide Widget 無痛插入 Maya UI">PyQt 或 PySide Widget 無痛插入 Maya UI</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-22T03:00:00+08:00">
+                Published: Tue 22 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/pyqt.html">PyQt</a> <a href="https://badboy99tw.github.io/tag/pyside.html">PySide</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info -->                <p>雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI 架構，該如何是好？！</p>
+<p>為了讓新的 PyQt / PySide Widget 無痛插入舊有的 Maya 工具，可以利用下面這個 function 將 qt widget 轉成 maya widget。</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_maya_widget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">):</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span><span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qtobj</span> <span class="o">=</span> <span class="n">shiboken</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/避開 VRay 算大場景連續圖會失敗的問題.html" rel="bookmark"
+                           title="Permalink to 避開 VRay 算大場景連續圖會失敗的問題">避開 VRay 算大場景連續圖會失敗的問題</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-06T10:34:00+08:00">
+                Published: Sun 06 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/vray.html">VRay</a> <a href="https://badboy99tw.github.io/tag/render.html">render</a> </p>
+</footer><!-- /.post-info -->                <p>在 Maya 算圖，如果沒有 Render Farm 的話，只能透過 Maya Render 一張一張慢慢算。</p>
+<p>但是 VRay 這個白癡，算圖的時候會把整個場景先轉成 vrscene 到系統的 temp 再算圖。在簡單場景或張數很少的情況，這作法還算無感，但如果是大場景或超長的卡，可能算個圖要先等個半小時一小時，而且等待的時間可能會讓你覺得 Maya 壞掉而重開機。</p>
+<p>就算你認命了決定等待，但也有可能 temp 爆掉讓 vrscene 產生失敗，最後圖還是算不出來。</p>
+<p>當時同事提供了一個簡單的解法，簡單來說，就是用 maya 的 render command 一張一張算圖，以下是範例：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="kt">int</span> <span class="err">$</span><span class="n">start</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="err">$</span><span class="n">end</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/避開 VRay 算大場景連續圖會失敗的問題.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html" rel="bookmark"
+                           title="Permalink to 從 Sublime 傳送 Python Code 到 Maya 執行">從 Sublime 傳送 Python Code 到 Maya 執行</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-03T16:15:00+08:00">
+                Published: Thu 03 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> </p>
+</footer><!-- /.post-info -->                <p>在 Maya 寫 Python 程式的派別不外乎：</p>
+<ul>
+<li>
+<p>Script Editor 派</p>
+<ul>
+<li>打開 Maya 的 Script Editor，直接寫直接跑</li>
+</ul>
+</li>
+<li>
+<p>其他文字編輯器派（vim、sublime、eclipse 等等）</p>
+<ul>
+<li>透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。</li>
+</ul>
+</li>
+</ul>
+<p>如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

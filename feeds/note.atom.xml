@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>盒仔內 ê 時間 - Note</title><link href="https://badboy99tw.github.io/" rel="alternate"></link><link href="https://badboy99tw.github.io/feeds/note.atom.xml" rel="self"></link><id>https://badboy99tw.github.io/</id><updated>2019-05-20T12:00:00+08:00</updated><entry><title>Facebook 後端登入流程</title><link href="https://badboy99tw.github.io/Facebook%20%E5%BE%8C%E7%AB%AF%E7%99%BB%E5%85%A5%E6%B5%81%E7%A8%8B.html" rel="alternate"></link><published>2019-05-20T12:00:00+08:00</published><updated>2019-05-20T12:00:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2019-05-20:/Facebook 後端登入流程.html</id><content type="html">&lt;p&gt;參考官方文件 &lt;a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow/"&gt;Manually Build a Login Flow&lt;/a&gt;，用 Python 實作使用者從前端按下登入按鈕，跳出 Facebook Login Dialog 確認授權後，前端再打後端 api，讓後端取得 access token，完成登入流程。&lt;/p&gt;
+&lt;p&gt;完整程式碼在 &lt;a href="https://github.com/badboy99tw/demo-facebook-login-in-backend"&gt;這邊&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;幾個重點：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前端要有地方可以跳出 Facebook Login Dialog&lt;/li&gt;
+&lt;li&gt;前端實作 redirect api，讓 Facebook 授權成功後打回來&lt;/li&gt;
+&lt;li&gt;後端實作 login api，讓前端拿到授權成功的 code 後可以打&lt;/li&gt;
+&lt;li&gt;前端要處理 CSRF Token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前還沒處理 CSRF Token，但只是 demo 的話好像也不需要，有空再說吧。&lt;/p&gt;</content><category term="Note"></category><category term="Facebook Login"></category></entry><entry><title>全民台語認證準備心得</title><link href="https://badboy99tw.github.io/%E5%85%A8%E6%B0%91%E5%8F%B0%E8%AA%9E%E8%AA%8D%E8%AD%89%E6%BA%96%E5%82%99%E5%BF%83%E5%BE%97.html" rel="alternate"></link><published>2018-07-26T12:00:00+08:00</published><updated>2018-07-26T12:00:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2018-07-26:/全民台語認證準備心得.html</id><summary type="html">&lt;p&gt;本來只打算分享今年考 &lt;a href="http://ctlt.twl.ncku.edu.tw/gtpt/index.html"&gt;全民台語認證&lt;/a&gt; 的心得，但因為我準備期太短了，不把過去的成長背景放進來看，會覺得這成績太扯，所以就一起寫吧！&lt;/p&gt;
+&lt;h2&gt;成績&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;閱讀：140/180&lt;/li&gt;
+&lt;li&gt;聽力：96/120&lt;/li&gt;
+&lt;li&gt;聽寫：77/80&lt;/li&gt;
+&lt;li&gt;口語：86/120&lt;/li&gt;
+&lt;li&gt;總分：399/500&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;級數：C1&lt;/p&gt;
+&lt;h2&gt;背景&lt;/h2&gt;
+&lt;p&gt;我出生在全母語家庭，唸書前應該是用台語在想事情，小時候聽非常多台語老歌，也聽很多伍佰的歌。因為學習管道除了父母外就是台語歌，所以我的腔調其實是混雜的，甚至有些唸錯的音我都可以跟你說是從哪一首歌學的。&lt;/p&gt;
+&lt;p&gt;到學校唸書後台語能力就開始下滑，我卻不自知，一直到當兵發現自己無法用台語講出一個完整的句子，才意識到事情的嚴重性，到現在我都還記得那個支支吾吾的場景，覺得該用台語回應別人，但卻嚴重失語的窘境。&lt;/p&gt;
+&lt;p&gt;工作幾年後認識 &lt;a href="https://www.tgb.org.tw/"&gt;李江卻台語文教基金會&lt;/a&gt; 的陳豐惠老師，學會了白話字，之後偶而會在電腦上用 &lt;a href="https://taigi.fhl.net/TaigiIME/"&gt;信望愛輸入法&lt;/a&gt;、或在手機上用 &lt;a href="https://play.google.com/store/apps/details?id=com.taccotap.phahtaigi&amp;amp;hl=zh_TW"&gt;Phah Tâi-gí 台語輸入法 …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;本來只打算分享今年考 &lt;a href="http://ctlt.twl.ncku.edu.tw/gtpt/index.html"&gt;全民台語認證&lt;/a&gt; 的心得，但因為我準備期太短了，不把過去的成長背景放進來看，會覺得這成績太扯，所以就一起寫吧！&lt;/p&gt;
+&lt;h2&gt;成績&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;閱讀：140/180&lt;/li&gt;
+&lt;li&gt;聽力：96/120&lt;/li&gt;
+&lt;li&gt;聽寫：77/80&lt;/li&gt;
+&lt;li&gt;口語：86/120&lt;/li&gt;
+&lt;li&gt;總分：399/500&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;級數：C1&lt;/p&gt;
+&lt;h2&gt;背景&lt;/h2&gt;
+&lt;p&gt;我出生在全母語家庭，唸書前應該是用台語在想事情，小時候聽非常多台語老歌，也聽很多伍佰的歌。因為學習管道除了父母外就是台語歌，所以我的腔調其實是混雜的，甚至有些唸錯的音我都可以跟你說是從哪一首歌學的。&lt;/p&gt;
+&lt;p&gt;到學校唸書後台語能力就開始下滑，我卻不自知，一直到當兵發現自己無法用台語講出一個完整的句子，才意識到事情的嚴重性，到現在我都還記得那個支支吾吾的場景，覺得該用台語回應別人，但卻嚴重失語的窘境。&lt;/p&gt;
+&lt;p&gt;工作幾年後認識 &lt;a href="https://www.tgb.org.tw/"&gt;李江卻台語文教基金會&lt;/a&gt; 的陳豐惠老師，學會了白話字，之後偶而會在電腦上用 &lt;a href="https://taigi.fhl.net/TaigiIME/"&gt;信望愛輸入法&lt;/a&gt;、或在手機上用 &lt;a href="https://play.google.com/store/apps/details?id=com.taccotap.phahtaigi&amp;amp;hl=zh_TW"&gt;Phah Tâi-gí 台語輸入法&lt;/a&gt; 打台文。會試著看全羅或漢羅的文章，在公開場合用台語表達想法，盡量以台語作為思考的語言。&lt;/p&gt;
+&lt;p&gt;前陣子參加 &lt;a href="https://smallbooks.com.tw/"&gt;小小書房&lt;/a&gt; 的 &lt;a href="https://smallbooks.com.tw/category/%E6%96%87%E5%AD%B8%E8%AE%80%E6%9B%B8%E6%9C%83/%E4%B8%96%E7%95%8C%E6%96%87%E5%AD%B8%E8%AE%80%E6%9B%B8%E6%9C%83/"&gt;世界文學讀書會&lt;/a&gt;，也試著用全台語和同學討論，如果不知道怎麼表達，就到 &lt;a href="https://itaigi.tw/"&gt;iTaigi&lt;/a&gt; 查。這幾年跑到宜蘭種水稻和菜，也學了一些農業相關的詞彙。&lt;/p&gt;
+&lt;p&gt;其實沒有很積極地增強台語能力，但就放在心上，有餘力的時候就查一下、用一下，慢慢累積這樣。&lt;/p&gt;
+&lt;p&gt;考試前台語的程度：全台語聊天沒問題，如果遇到不會表達的詞彙或語境，就用更多句子去描述；讀的部分，我本來看文字就很快，所以漢羅沒什麼問題，但全羅非常慢，需要一個字一個字慢慢唸，變調也都要算一下；手寫幾乎沒練習過，平常都用手機或電腦打字。&lt;/p&gt;
+&lt;h2&gt;報考原因&lt;/h2&gt;
+&lt;p&gt;這兩年一直在盤算未來生活和謀生的各種可能性，四月中向在台語基金會工作的朋友詢問關於成人或國中小台語班的開課狀況，朋友建議我可以先考成大辦理的「全民台語認證」，也可以開始投稿到台語刊物（例如 &lt;a href="https://tsbp.tgb.org.tw/"&gt;台文通訊 BONG 報&lt;/a&gt;）或比賽，累積經歷，之後開班比較好招人。&lt;/p&gt;
+&lt;p&gt;其實教育部也有委託師大推廣部辦理「閩南語語言能力認證」，但我不認同「閩南語」這個說法，所以不打算報考。&lt;/p&gt;
+&lt;h2&gt;準備過程&lt;/h2&gt;
+&lt;p&gt;從報名到考試只剩一個多月，所以準備過程非常簡陋：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;花幾個晚上朗讀《全民台語認證導論》的文章，加強語感。&lt;/li&gt;
+&lt;li&gt;背《全民台語認證語詞分級寶典》。這本書收錄八千個台語詞彙，最後二十天打算一天背 400 個，但只堅持五天。不過看過的每個詞彙我都盡量到教育部臺灣閩南語常用詞辭典找出例句。附帶一提，這本書絕版了，我是到圖書館借的，但出版社説暑假會再版，有興趣的人可以再寄信去問問。&lt;/li&gt;
+&lt;li&gt;考前一天在火車上做一次考古題，這時候才知道題型。&lt;/li&gt;
+&lt;li&gt;考前一晚惡補調號位置：a &amp;gt; oo &amp;gt; e, o &amp;gt; i, u。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;考試心得&lt;/h2&gt;
+&lt;h3&gt;閱讀測驗&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;題目很多，不要猶豫不然會寫不完。&lt;/li&gt;
+&lt;li&gt;進階詞彙沒背到就是沒分，雖然會倒扣但我還是猜下去了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;聽力測驗&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;日常對話蠻簡單的，平常有用台語聊天的話應該都會對。&lt;/li&gt;
+&lt;li&gt;短講很難，很多不同領域的專有名詞，例如醫學、農業、科技等等，如果台語聽得不夠廣的話應該會聽到呆掉。最好在短講開始前先快速掃過選擇題的選項，作答會比較有把握。但老實說這部分我很多是用猜的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;聽寫測驗&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;本來以為我聽寫很爛，但考完反而最有把握，因為就是聽到什麼寫什麼。這比打字簡單，打字是聽寫自己的發音，可能是錯的，但聽寫測驗是聽寫專業人士的發音，根本舒服。&lt;/li&gt;
+&lt;li&gt;如果平常都用鍵盤打字，那調號會很弱，所以平時最好要強迫自己輸入調號來練習。&lt;/li&gt;
+&lt;li&gt;好險前一晚有惡補聲調位置，另外考前監考人員提醒我們要注意 i 上面的那一點，不要和調號混淆，不然會影響評分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;口語測驗&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;看圖說故事我只能看到什麼說什麼，絲毫沒有故事性，但平常還是可以練習一下，例如試著用台語說出房間內每個物品的名稱。&lt;/li&gt;
+&lt;li&gt;申論題的部分，可能要練習一些常用的結構和句型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;結語&lt;/h2&gt;
+&lt;p&gt;考前在教室外聽到年輕一點的考生都還是用華語交談，年長一點的考生也會犯「是按呢嘛？」這類的語法錯誤，台語的流失真的是以我們想像不到的速度在進行。&lt;/p&gt;
+&lt;p&gt;到底怎樣叫會台語呢？如果想不清楚這件事，可以把台語換成英語，那就很清楚了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我們跟英語人士聊天，會穿插華語嗎？&lt;/li&gt;
+&lt;li&gt;我們有因為會罵 FUCK 就覺得自己會講英語嗎？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要先承認自己其實沒那麼會講台語，才有機會變強啊！&lt;/p&gt;
+&lt;p&gt;回過頭來說，我覺得成大辦理的全民台語認證很有鑑別度，考試過程中可以清楚感受到自己的弱項和未來該加強的方向，想知道自己台語程度、或是想在台語這塊多琢磨，但不知道該如何下手的話，建議可以先來考一次看看。&lt;/p&gt;
+&lt;h2&gt;工商服務&lt;/h2&gt;
+&lt;p&gt;有感於網路上台語內容太少，我最近想從改編台語老歌開始，多做一些台語歌的創作和表演，但這計劃還在非常初期的階段，現在也只出了一首 &lt;a href="https://streetvoice.com/badboy99/songs/560760/"&gt;孤女 ê 願望&lt;/a&gt;，歡迎批評指教！&lt;/p&gt;</content><category term="Note"></category><category term="Taiwaness"></category><category term="POJ"></category></entry><entry><title>關於 Python Descriptor 的一個實用範例（lazy operator）</title><link href="https://badboy99tw.github.io/%E9%97%9C%E6%96%BC%20Python%20Descriptor%20%E7%9A%84%E4%B8%80%E5%80%8B%E5%AF%A6%E7%94%A8%E7%AF%84%E4%BE%8B%EF%BC%88lazy%20operator%EF%BC%89.html" rel="alternate"></link><published>2015-09-23T23:07:00+08:00</published><updated>2015-09-23T23:07:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2015-09-23:/關於 Python Descriptor 的一個實用範例（lazy operator）.html</id><summary type="html">&lt;p&gt;最近在看 &lt;a href="http://www.tenlong.com.tw/items/9864340417?item_id=1006942"&gt;Mastering Python Design Patterns&lt;/a&gt;。看到這個例子很有趣，他延遲了某些運算成本比較高的 member variable 的初始化時間。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LazyProperty&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;function overriden: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;function&lt;/span&gt;&lt;span class="se"&gt;\&amp;#39;&lt;/span&gt;&lt;span class="s1"&gt;s name: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method_name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+        &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;最近在看 &lt;a href="http://www.tenlong.com.tw/items/9864340417?item_id=1006942"&gt;Mastering Python Design Patterns&lt;/a&gt;。看到這個例子很有趣，他延遲了某些運算成本比較高的 member variable 的初始化時間。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LazyProperty&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__name__&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;function overriden: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;function&lt;/span&gt;&lt;span class="se"&gt;\&amp;#39;&lt;/span&gt;&lt;span class="s1"&gt;s name: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method_name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__get__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+        &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;setattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Test&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bar&amp;#39;&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_resource&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@LazyProperty&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;initializing self._resource which is: &lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_resource&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_resource&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_resource&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Test&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;輸出的結果如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt; overriden: &amp;lt;&lt;span class="k"&gt;function&lt;/span&gt; Test.resource at 0x10b0fc9d8&amp;gt;
+&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s name: resource
+foo
+bar
+initializing self._resource which is: None
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt;, &lt;span class="m"&gt;2&lt;/span&gt;, &lt;span class="m"&gt;3&lt;/span&gt;, &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;, &lt;span class="m"&gt;1&lt;/span&gt;, &lt;span class="m"&gt;2&lt;/span&gt;, &lt;span class="m"&gt;3&lt;/span&gt;, &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以發現 resource 的 initialization 只被執行過一次！原因是因為 descriptor 只有定義 &lt;code&gt;__get__&lt;/code&gt;，所以 descriptor 在第一次執行 &lt;code&gt;__get__&lt;/code&gt; 的時候，就被 &lt;code&gt;setattr(obj, self.method_name, value)&lt;/code&gt; 這行取代了，讓第二次的取值，變成直接拿值，而不是再次執行 &lt;code&gt;__get__&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;這招實在太酷炫了，趕快記下來！&lt;/p&gt;</content><category term="Note"></category><category term="Python"></category></entry><entry><title>在 Mac 上使用 Evernote，如何關掉單、雙引號的自動轉換？</title><link href="https://badboy99tw.github.io/%E5%9C%A8%20Mac%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20Evernote%EF%BC%8C%E5%A6%82%E4%BD%95%E9%97%9C%E6%8E%89%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E7%9A%84%E8%87%AA%E5%8B%95%E8%BD%89%E6%8F%9B%EF%BC%9F.html" rel="alternate"></link><published>2015-07-12T17:22:00+08:00</published><updated>2015-07-12T17:22:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2015-07-12:/在 Mac 上使用 Evernote，如何關掉單、雙引號的自動轉換？.html</id><summary type="html">&lt;p&gt;這一年開始拿 Mac 作為工作機，在使用 Evernote 時常遇到煩人的狀況，就是每當在 Note 輸入雙引號（"），都會被自動換成（“），單引號（'）會被換成（‘）。因為常用的 bash command 會存在 Evernote 裡面，每次從 Evernote 剪下貼到 Terminal 的時候都會執行錯誤，實在覺得~~很靠北~~非常惱人。&lt;/p&gt;
+&lt;p&gt;本來以為是 Evernote 雞婆，上網查了一下才發現原來是 Mac 設定的問題，只要把 use smart quotes 關掉就好了。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;System Preferences -&amp;gt; Language and Region -&amp;gt; Keyboard preferences -&amp;gt; Text -&amp;gt; Uncheck "use smart quotes"&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Refs …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;這一年開始拿 Mac 作為工作機，在使用 Evernote 時常遇到煩人的狀況，就是每當在 Note 輸入雙引號（"），都會被自動換成（“），單引號（'）會被換成（‘）。因為常用的 bash command 會存在 Evernote 裡面，每次從 Evernote 剪下貼到 Terminal 的時候都會執行錯誤，實在覺得~~很靠北~~非常惱人。&lt;/p&gt;
+&lt;p&gt;本來以為是 Evernote 雞婆，上網查了一下才發現原來是 Mac 設定的問題，只要把 use smart quotes 關掉就好了。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;System Preferences -&amp;gt; Language and Region -&amp;gt; Keyboard preferences -&amp;gt; Text -&amp;gt; Uncheck "use smart quotes"&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Refs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://discussion.evernote.com/topic/52621-evernote-on-mac-automagically-and-annoyingly-replacing-apostrophe-with-left-single-quote/" title="Evernote on Mac automagically and annoyingly replacing apostrophe with left single quote"&gt;Evernote on Mac automagically and annoyingly replacing apostrophe with left single quote&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Note"></category><category term="MacOS"></category><category term="Evernote"></category></entry><entry><title>使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！</title><link href="https://badboy99tw.github.io/%E4%BD%BF%E7%94%A8%20mayapy%20%E5%A6%82%E6%9E%9C%20crash%EF%BC%8C%E5%8F%AF%E8%83%BD%E6%98%AF%20MEL%20%E7%92%B0%E5%A2%83%E6%B2%92%E6%9C%89%E5%81%9A%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%81.html" rel="alternate"></link><published>2014-09-24T17:58:00+08:00</published><updated>2014-09-24T17:58:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2014-09-24:/使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！.html</id><summary type="html">&lt;p&gt;以下是一個會把 mayapy 搞爛的例子。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.standalone&lt;/span&gt;
+&lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;standalone&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.cmds&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;cmds&lt;/span&gt;
+&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadPlugin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mayatomr&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;p&gt;但是神奇的事情來了，只要我有先 import pymel，
+那之後再 load mentalray 就不會讓 mayapy 爛掉，
+所以一定是 pymel 裡面做了什麼事情！&lt;/p&gt;
+&lt;p&gt;偷看一下原來是 pymel.internal.startup 裡面有個 initMEL 的 function，
+程式會 source 一些分布在 maya 安裝目錄和 prefs 底下做 startup 的 mel …&lt;/p&gt;</summary><content type="html">&lt;p&gt;以下是一個會把 mayapy 搞爛的例子。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.standalone&lt;/span&gt;
+&lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;standalone&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.cmds&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;cmds&lt;/span&gt;
+&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadPlugin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mayatomr&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;p&gt;但是神奇的事情來了，只要我有先 import pymel，
+那之後再 load mentalray 就不會讓 mayapy 爛掉，
+所以一定是 pymel 裡面做了什麼事情！&lt;/p&gt;
+&lt;p&gt;偷看一下原來是 pymel.internal.startup 裡面有個 initMEL 的 function，
+程式會 source 一些分布在 maya 安裝目錄和 prefs 底下做 startup 的 mel file。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initMEL&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;PYMEL_SKIP_MEL_INIT&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;pymel_options&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;skip_mel_init&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Skipping MEL initialization&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;
+
+    &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;initMEL&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;mayaVersion&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;versions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;installName&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;prefsDir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getUserPrefsDir&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prefsDir&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;could not initialize user preferences: MAYA_APP_DIR not set&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefsDir&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;could not initialize user preferences: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; does not exist&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;prefsDir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# TODO : use cmds.internalVar to get paths&lt;/span&gt;
+    &lt;span class="c1"&gt;# got this startup sequence from autodesk support&lt;/span&gt;
+
+    &lt;span class="n"&gt;startup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;defaultRunTimeCommands.mel&amp;#39;,  # sourced automatically&lt;/span&gt;
+        &lt;span class="c1"&gt;# os.path.join( prefsDir, &amp;#39;userRunTimeCommands.mel&amp;#39;), # sourced&lt;/span&gt;
+        &lt;span class="c1"&gt;# automatically&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;createPreferencesOptVars.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;createGlobalOptVars.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefsDir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;userPrefs.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prefsDir&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;initialStartup.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="c1"&gt;#$HOME/Documents/maya/projects/default/workspace.mel&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;initialPlugins.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;initialGUI.mel&amp;#39;, #GUI&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;initialLayout.mel&amp;#39;, #GUI&lt;/span&gt;
+        &lt;span class="c1"&gt;# os.path.join( prefsDir, &amp;#39;windowPrefs.mel&amp;#39;), #GUI&lt;/span&gt;
+        &lt;span class="c1"&gt;# os.path.join( prefsDir, &amp;#39;menuSetPrefs.mel&amp;#39;), #GUI&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;hotkeySetup.mel&amp;#39;, #GUI&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;namedCommandSetup.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefsDir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;userNamedCommands.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prefsDir&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="c1"&gt;# &amp;#39;initAfter.mel&amp;#39;, #GUI&lt;/span&gt;
+        &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefsDir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pluginPrefs.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;prefsDir&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;startup&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;running: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isabs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                    &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Maya startup file &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; does not exist&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                    &lt;span class="c1"&gt;# need to encode backslashes (used for windows paths)&lt;/span&gt;
+                    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                        &lt;span class="n"&gt;encoding&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;unicode_escape&amp;#39;&lt;/span&gt;
+                    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                        &lt;span class="n"&gt;encoding&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;string_escape&amp;#39;&lt;/span&gt;
+                    &lt;span class="c1"&gt;#import pymel.core.language as lang&lt;/span&gt;
+                    &lt;span class="c1"&gt;#lang.mel.source( f.encode(encoding)  )&lt;/span&gt;
+                    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.mel&lt;/span&gt;
+                    &lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;source &amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;quot;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s2"&gt;&amp;quot;could not perform Maya initialization sequence: failed on &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c1"&gt;# make sure it exists&lt;/span&gt;
+        &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;whatIs &amp;quot;userSetup.mel&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Unknown&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;source &amp;quot;userSetup.mel&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;RuntimeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+    &lt;span class="n"&gt;_logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;done running mel files&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;結論&lt;/h2&gt;
+&lt;p&gt;不想 import 肥滋滋的 pymel 的話，直接幹上面這個 initMEL 來用就好，
+或是 import pymel.internal.startup 再執行 initMEL。&lt;/p&gt;
+&lt;p&gt;更懶的話可以只 source 底下幾個 MEL file。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya&lt;/span&gt;
+&lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;source createPreferencesOptVars.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;source createGlobalOptVars.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;maya&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;source initialStartup.mel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;好久沒寫文章了，這篇又靠複製貼上弄得好像文章很長，
+似乎有點廢啊...&lt;/p&gt;</content><category term="Note"></category><category term="Maya"></category><category term="mayapy"></category><category term="MEL"></category></entry><entry><title>安裝 Windows 版 pylint 和 Sublime Pylinter</title><link href="https://badboy99tw.github.io/%E5%AE%89%E8%A3%9D%20Windows%20%E7%89%88%20pylint%20%E5%92%8C%20Sublime%20Pylinter.html" rel="alternate"></link><published>2014-08-01T16:50:00+08:00</published><updated>2014-08-01T16:50:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2014-08-01:/安裝 Windows 版 pylint 和 Sublime Pylinter.html</id><summary type="html">&lt;p&gt;最近在整理寫程式的環境，打算使用 Sublime 下的 &lt;a href="https://sublime.wbond.net/packages/Pylinter"&gt;Pylinter&lt;/a&gt; 和 &lt;a href="https://sublime.wbond.net/packages/Python%20PEP8%20Autoformat"&gt;Python PEP8 Autoformat&lt;/a&gt; 做程式碼的規範。但因為工作環境已經把 python 執行檔及 modules 分開了，所以預設的安裝方式及設定是無法使用的，Pylinter 會找不到 python 執行檔跟 pylint，只好手動安裝。&lt;/p&gt;
+&lt;h2&gt;安裝 pylint / Sublime Pylinter&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝 pylint 和需要用到的 modules&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/pylint"&gt;pylint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/logilab-common"&gt;logilab-common&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/astroid"&gt;astroid&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安裝 &lt;a href="https://sublime.wbond.net/packages/Pylinter"&gt;Pylinter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;修改 Pylinter 設定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;python_bin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/path/to/python.exe&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;python_path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;/path/to/pylint&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;/path/to/logilab-common …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;最近在整理寫程式的環境，打算使用 Sublime 下的 &lt;a href="https://sublime.wbond.net/packages/Pylinter"&gt;Pylinter&lt;/a&gt; 和 &lt;a href="https://sublime.wbond.net/packages/Python%20PEP8%20Autoformat"&gt;Python PEP8 Autoformat&lt;/a&gt; 做程式碼的規範。但因為工作環境已經把 python 執行檔及 modules 分開了，所以預設的安裝方式及設定是無法使用的，Pylinter 會找不到 python 執行檔跟 pylint，只好手動安裝。&lt;/p&gt;
+&lt;h2&gt;安裝 pylint / Sublime Pylinter&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝 pylint 和需要用到的 modules&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/pylint"&gt;pylint&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/logilab-common"&gt;logilab-common&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/astroid"&gt;astroid&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安裝 &lt;a href="https://sublime.wbond.net/packages/Pylinter"&gt;Pylinter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;修改 Pylinter 設定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;python_bin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/path/to/python.exe&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;python_path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;/path/to/pylint&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;/path/to/logilab-common&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;/path/to/astroid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;pylint_path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/path/to/pylint/lint.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目前已知問題是 Pylinter 抓不到 pylint 的版本，可能要 trace code 研究一下，但執行起來好像沒什麼問題。&lt;/p&gt;
+&lt;h2&gt;Pylinter 其他設定&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;verbose&lt;ul&gt;
+&lt;li&gt;開啟後 console 會印出 pylint 執行的訊息，可惜的是打分數那段沒看到，不知道為什麼。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use_icons&lt;ul&gt;
+&lt;li&gt;開啟後 sublime 左邊顯示 error 的圖案會因檢查的結果有所差別，不開的話就只是個白點。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;run_on_save&lt;ul&gt;
+&lt;li&gt;開啟後每次存檔會跑 pylint，其實有點花時間，建議手動執行 Pylinter 就好。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Pylinter 熱鍵&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ctrl+alt+z&lt;ul&gt;
+&lt;li&gt;執行 Pylinter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ctrl+alt+x&lt;ul&gt;
+&lt;li&gt;開啟 / 關閉 Pylinter 結果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ctrl+alt+c&lt;ul&gt;
+&lt;li&gt;條列 Pylinter 結果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ctrl+alt+i&lt;ul&gt;
+&lt;li&gt;忽略游標所在該行的錯誤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;附帶一提，只有 ctrl+alt+z 會重跑 Pylinter，其他熱鍵只會改變顯示方式。&lt;/p&gt;</content><category term="Note"></category><category term="Windows"></category><category term="Pylint"></category><category term="Sublime"></category></entry><entry><title>PyQt 或 PySide Widget 無痛插入 Maya UI</title><link href="https://badboy99tw.github.io/PyQt%20%E6%88%96%20PySide%20Widget%20%E7%84%A1%E7%97%9B%E6%8F%92%E5%85%A5%20Maya%20UI.html" rel="alternate"></link><published>2014-07-22T03:00:00+08:00</published><updated>2014-07-22T03:00:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2014-07-22:/PyQt 或 PySide Widget 無痛插入 Maya UI.html</id><summary type="html">&lt;p&gt;雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI 架構，該如何是好？！&lt;/p&gt;
+&lt;p&gt;為了讓新的 PyQt / PySide Widget 無痛插入舊有的 Maya 工具，可以利用下面這個 function 將 qt widget 轉成 maya widget。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_maya_widget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qt_widget&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columnLayout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;adjustableColumn&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;qtobj&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shiboken&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wrapInstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;long …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI 架構，該如何是好？！&lt;/p&gt;
+&lt;p&gt;為了讓新的 PyQt / PySide Widget 無痛插入舊有的 Maya 工具，可以利用下面這個 function 將 qt widget 轉成 maya widget。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_maya_widget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qt_widget&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columnLayout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;adjustableColumn&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;qtobj&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shiboken&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wrapInstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;long&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mui&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MQtUtil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findLayout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;QtCore&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QObject&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;qtobj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qt_widget&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setParent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;..&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;想法很簡單&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;maya.cmds 產生一個之後要拿來塞 Widget 的 layout&lt;/li&gt;
+&lt;li&gt;利用 shiboken.wrapInstance / sip.wrapinstance 將 maya layout 轉成 QObject&lt;/li&gt;
+&lt;li&gt;從 QObject 取得 qt layout，再透過 addWidget 加入 qt widget 就可以了！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完整測試程式在此&lt;/p&gt;
+&lt;p&gt;測試環境：Mac OSX 10.9.4 + Maya 2015 + PySide + shiboken&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PySide&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QtCore&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PySide&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QtGui&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;shiboken&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.cmds&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;cmds&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.OpenMayaUI&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mui&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;to_maya_widget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qt_widget&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columnLayout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;adjustableColumn&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;qtobj&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shiboken&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wrapInstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;long&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mui&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MQtUtil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findLayout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;QtCore&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QObject&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;qtobj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;children&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;layout&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addWidget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qt_widget&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setParent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;..&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pyside_button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;btn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QtGui&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QPushButton&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;btn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clicked&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;to_maya_widget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;btn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;maya_press_callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hello Maya&amp;#39;&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pyside_press_callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Hello PySide&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;win&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;150&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;main_layout&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columnLayout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;adjustableColumn&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Maya Button&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;maya_press_callback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pyside_button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PySide Button&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;pyside_press_callback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Maya Button 2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;maya_press_callback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;showWindow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;從程式碼可以看到，pyside_button 就這樣神不知鬼不覺的混進去了！只要介面再裝扮一下，一切就是那麼自然～&lt;/p&gt;
+&lt;p&gt;既然維護舊程式是逃避不了的宿命，那希望這個小程式可以帶來一點光（是說通常重寫比較爽...）&lt;/p&gt;
+&lt;h2&gt;Refs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://tech-artists.org/forum/showthread.php?2845-PyQt-Widget-in-Maya-Mel-UI-problem"&gt;PyQt Widget in Maya Mel UI problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/22331337/how-to-get-maya-main-window-pointer-using-pyside"&gt;How to get maya main window pointer using PySide?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Note"></category><category term="Maya"></category><category term="PyQt"></category><category term="PySide"></category><category term="Python"></category></entry><entry><title>避開 VRay 算大場景連續圖會失敗的問題</title><link href="https://badboy99tw.github.io/%E9%81%BF%E9%96%8B%20VRay%20%E7%AE%97%E5%A4%A7%E5%A0%B4%E6%99%AF%E9%80%A3%E7%BA%8C%E5%9C%96%E6%9C%83%E5%A4%B1%E6%95%97%E7%9A%84%E5%95%8F%E9%A1%8C.html" rel="alternate"></link><published>2014-07-06T10:34:00+08:00</published><updated>2014-07-06T10:34:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2014-07-06:/避開 VRay 算大場景連續圖會失敗的問題.html</id><summary type="html">&lt;p&gt;在 Maya 算圖，如果沒有 Render Farm 的話，只能透過 Maya Render 一張一張慢慢算。&lt;/p&gt;
+&lt;p&gt;但是 VRay 這個白癡，算圖的時候會把整個場景先轉成 vrscene 到系統的 temp 再算圖。在簡單場景或張數很少的情況，這作法還算無感，但如果是大場景或超長的卡，可能算個圖要先等個半小時一小時，而且等待的時間可能會讓你覺得 Maya 壞掉而重開機。&lt;/p&gt;
+&lt;p&gt;就算你認命了決定等待，但也有可能 temp 爆掉讓 vrscene 產生失敗，最後圖還是算不出來。&lt;/p&gt;
+&lt;p&gt;當時同事提供了一個簡單的解法，簡單來說，就是用 maya 的 render command 一張一張算圖，以下是範例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;101&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;在 Maya 算圖，如果沒有 Render Farm 的話，只能透過 Maya Render 一張一張慢慢算。&lt;/p&gt;
+&lt;p&gt;但是 VRay 這個白癡，算圖的時候會把整個場景先轉成 vrscene 到系統的 temp 再算圖。在簡單場景或張數很少的情況，這作法還算無感，但如果是大場景或超長的卡，可能算個圖要先等個半小時一小時，而且等待的時間可能會讓你覺得 Maya 壞掉而重開機。&lt;/p&gt;
+&lt;p&gt;就算你認命了決定等待，但也有可能 temp 爆掉讓 vrscene 產生失敗，最後圖還是算不出來。&lt;/p&gt;
+&lt;p&gt;當時同事提供了一個簡單的解法，簡單來說，就是用 maya 的 render command 一張一張算圖，以下是範例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;101&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;setAttr&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;defaultRenderGlobals.startFrame&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;setAttr&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;defaultRenderGlobals.endFrame&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;RenderIntoNewWindow&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;因為每個 frame 都下一次 render 指令，所以 vray 就不會把 100 個 frames 的算圖資訊放在同一個 vrscene 裡面了。&lt;/p&gt;
+&lt;p&gt;是說我還是不懂 VRay 在想什麼...&lt;/p&gt;
+&lt;h2&gt;Refs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;http://download.autodesk.com/us/maya/2010help/Commands/render.html&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Note"></category><category term="Maya"></category><category term="VRay"></category><category term="render"></category></entry><entry><title>從 Sublime 傳送 Python Code 到 Maya 執行</title><link href="https://badboy99tw.github.io/%E5%BE%9E%20Sublime%20%E5%82%B3%E9%80%81%20Python%20Code%20%E5%88%B0%20Maya%20%E5%9F%B7%E8%A1%8C.html" rel="alternate"></link><published>2014-07-03T16:15:00+08:00</published><updated>2014-07-03T16:15:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2014-07-03:/從 Sublime 傳送 Python Code 到 Maya 執行.html</id><summary type="html">&lt;p&gt;在 Maya 寫 Python 程式的派別不外乎：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Script Editor 派&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打開 Maya 的 Script Editor，直接寫直接跑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其他文字編輯器派（vim、sublime、eclipse 等等）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。&lt;/li&gt;
+&lt;li&gt;透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。&lt;/li&gt;
+&lt;li&gt;透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime …&lt;/p&gt;</summary><content type="html">&lt;p&gt;在 Maya 寫 Python 程式的派別不外乎：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Script Editor 派&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打開 Maya 的 Script Editor，直接寫直接跑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其他文字編輯器派（vim、sublime、eclipse 等等）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。&lt;/li&gt;
+&lt;li&gt;透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。&lt;/li&gt;
+&lt;li&gt;透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime 這個 Sublime Package 來改善開發流程！&lt;/p&gt;
+&lt;h2&gt;安裝步驟&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;安裝 Sublime Package Control，&lt;a href="https://sublime.wbond.net/installation"&gt;官網&lt;/a&gt;有安裝的方法，大家可以參考。&lt;/li&gt;
+&lt;li&gt;透過 Package Control 安裝 MayaSublime。&lt;/li&gt;
+&lt;li&gt;打開 Maya，執行下面這段 Python 程式碼來開啟 Command Port。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;maya.cmds&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;cmds&lt;/span&gt;
+&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commandPort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;:7002&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sourceType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;用 Sublime 打開任何一個 Python 檔（或是開新檔後存成 Python 檔），在裡面打上一段測試的程式。此時按下 &lt;code&gt;Ctrl + Enter&lt;/code&gt;，反白選取的程式碼就會被傳送到 Maya 內執行。如果沒有選取任何程式，則整個 Python 檔的內容都會被傳送到 Maya 內執行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這邊要注意的是，通常大家會同時開好幾個 Maya 工作，但是只能有一個 Maya 跟 Sublime 溝通喔。&lt;/p&gt;
+&lt;p&gt;另外，如果預設的 Command Port 7002 和其他程式有衝突的話，可以在 Sublime 內到下面的位置做修改。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sublime -&amp;gt; Preferences -&amp;gt; Package Settings -&amp;gt; MayaSublime -&amp;gt; Settings - User&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;加入下面這段設定，將 7002 改成期望的 port 後存檔即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;python_command_port&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;7002&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其實 Mel 也可以這樣搞，但是基於私心我就不寫了，科科。&lt;/p&gt;
+&lt;h2&gt;Refs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/justinfx/MayaSublime"&gt;MayaSublime&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sublime.wbond.net/"&gt;Package Control&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fredrik.averpil.com/post/55507118045"&gt;SEND MEL/PYTHON CODE FROM SUBLIME TEXT TO MAYA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Note"></category><category term="Sublime"></category><category term="Python"></category><category term="Maya"></category></entry><entry><title>從 Cygwin 執行 Windows 程式</title><link href="https://badboy99tw.github.io/%E5%BE%9E%20Cygwin%20%E5%9F%B7%E8%A1%8C%20Windows%20%E7%A8%8B%E5%BC%8F.html" rel="alternate"></link><published>2014-07-01T14:58:00+08:00</published><updated>2014-07-01T14:58:00+08:00</updated><author><name>badboy99</name></author><id>tag:badboy99tw.github.io,2014-07-01:/從 Cygwin 執行 Windows 程式.html</id><summary type="html">&lt;p&gt;工作了幾年，才漸漸接受自己必須在 Windows 底下做事的事實。&lt;/p&gt;
+&lt;p&gt;一開始比較逃避現實的解法是透過 VirtualBox 安裝 Ubuntu，繼續躲在 Linux 溫柔鄉。但現在的工作沒有權限修改 BIOS 來開啟硬體加速的支援，導致 VirtualBox 速度慢到無法接受！寫一個 PyQt 的程式，Widget 居然龜速到一個一個慢慢跳出來！&lt;/p&gt;
+&lt;p&gt;只好改變戰略投靠 Cygwin！&lt;/p&gt;
+&lt;p&gt;從 Cygwin 執行 Windows 程式其實很簡單，打程式的名稱就好。但如果透過 &lt;a href="http://cygwin-lite.sourceforge.net/html/cygpath.html"&gt;cygpath&lt;/a&gt; 做路徑轉換，還可以做到無縫接軌！&lt;/p&gt;
+&lt;p&gt;以下是我用來執行 explorer 的 wrapper。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+explorer.exe &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;cygpath -pw &lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這是個非常簡單的 wrapper。從此可以在 Cygwin 無痛開啟資料夾 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;工作了幾年，才漸漸接受自己必須在 Windows 底下做事的事實。&lt;/p&gt;
+&lt;p&gt;一開始比較逃避現實的解法是透過 VirtualBox 安裝 Ubuntu，繼續躲在 Linux 溫柔鄉。但現在的工作沒有權限修改 BIOS 來開啟硬體加速的支援，導致 VirtualBox 速度慢到無法接受！寫一個 PyQt 的程式，Widget 居然龜速到一個一個慢慢跳出來！&lt;/p&gt;
+&lt;p&gt;只好改變戰略投靠 Cygwin！&lt;/p&gt;
+&lt;p&gt;從 Cygwin 執行 Windows 程式其實很簡單，打程式的名稱就好。但如果透過 &lt;a href="http://cygwin-lite.sourceforge.net/html/cygpath.html"&gt;cygpath&lt;/a&gt; 做路徑轉換，還可以做到無縫接軌！&lt;/p&gt;
+&lt;p&gt;以下是我用來執行 explorer 的 wrapper。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+explorer.exe &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;cygpath -pw &lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這是個非常簡單的 wrapper。從此可以在 Cygwin 無痛開啟資料夾，不必再打 explorer.exe /cygdrive/c/ooxx 這種囉嗦的路徑了！&lt;/p&gt;</content><category term="Note"></category><category term="Cygwin"></category><category term="Windows"></category></entry></feed>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>從 Sublime 傳送 Python Code 到 Maya 執行</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+        <meta name="description" content="在 Maya 寫 Python 程式的派別不外乎： Script Editor 派 打開 Maya 的 Script Editor，直接寫直接跑 其他文字編輯器派（vim、sublime、eclipse 等等） 透過系統設定修改環境變數 PYTHONPATH，再經由..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li class="active"><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html" rel="bookmark"
+           title="Permalink to 從 Sublime 傳送 Python Code 到 Maya 執行">從 Sublime 傳送 Python Code 到 Maya 執行</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-03T16:15:00+08:00">
+                Published: Thu 03 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> </p>
+</footer><!-- /.post-info -->      <p>在 Maya 寫 Python 程式的派別不外乎：</p>
+<ul>
+<li>
+<p>Script Editor 派</p>
+<ul>
+<li>打開 Maya 的 Script Editor，直接寫直接跑</li>
+</ul>
+</li>
+<li>
+<p>其他文字編輯器派（vim、sublime、eclipse 等等）</p>
+<ul>
+<li>透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。</li>
+</ul>
+</li>
+</ul>
+<p>如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime 這個 Sublime Package 來改善開發流程！</p>
+<h2>安裝步驟</h2>
+<ul>
+<li>安裝 Sublime Package Control，<a href="https://sublime.wbond.net/installation">官網</a>有安裝的方法，大家可以參考。</li>
+<li>透過 Package Control 安裝 MayaSublime。</li>
+<li>打開 Maya，執行下面這段 Python 程式碼來開啟 Command Port。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">commandPort</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;:7002&quot;</span><span class="p">,</span> <span class="n">sourceType</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>用 Sublime 打開任何一個 Python 檔（或是開新檔後存成 Python 檔），在裡面打上一段測試的程式。此時按下 <code>Ctrl + Enter</code>，反白選取的程式碼就會被傳送到 Maya 內執行。如果沒有選取任何程式，則整個 Python 檔的內容都會被傳送到 Maya 內執行。</li>
+</ul>
+<p>這邊要注意的是，通常大家會同時開好幾個 Maya 工作，但是只能有一個 Maya 跟 Sublime 溝通喔。</p>
+<p>另外，如果預設的 Command Port 7002 和其他程式有衝突的話，可以在 Sublime 內到下面的位置做修改。</p>
+<p><code>Sublime -&gt; Preferences -&gt; Package Settings -&gt; MayaSublime -&gt; Settings - User</code></p>
+<p>加入下面這段設定，將 7002 改成期望的 port 後存檔即可。</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python_command_port&quot;</span> <span class="p">:</span> <span class="mi">7002</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>其實 Mel 也可以這樣搞，但是基於私心我就不寫了，科科。</p>
+<h2>Refs</h2>
+<ul>
+<li><a href="https://github.com/justinfx/MayaSublime">MayaSublime</a></li>
+<li><a href="https://sublime.wbond.net/">Package Control</a></li>
+<li><a href="http://fredrik.averpil.com/post/55507118045">SEND MEL/PYTHON CODE FROM SUBLIME TEXT TO MAYA</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>盒仔內 ê 時間 - Python</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://badboy99tw.github.io/關於 Python Descriptor 的一個實用範例（lazy operator）.html">關於 Python Descriptor 的一個實用範例（lazy operator）</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-09-23T23:07:00+08:00">
+                Published: Wed 23 September 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info --><p>最近在看 <a href="http://www.tenlong.com.tw/items/9864340417?item_id=1006942">Mastering Python Design Patterns</a>。看到這個例子很有趣，他延遲了某些運算成本比較高的 member variable 的初始化時間。</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LazyProperty</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method_name</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;function overriden: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;function</span><span class="se">\&#39;</span><span class="s1">s name: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">method_name</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+<span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resource</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@LazyProperty</span>
+    <span class="k">def</span> <span class="nf">resource</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;initializing self._resource which is: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resource</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resource</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resource</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">resource</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">resource</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<p>輸出的結果如下</p>
+<div class="highlight"><pre><span></span><span class="k">function</span> overriden: &lt;<span class="k">function</span> Test.resource at 0x10b0fc9d8&gt;
+<span class="k">function</span><span class="err">&#39;</span>s name: resource
+foo
+bar
+initializing self._resource which is: None
+<span class="o">(</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span><span class="o">)</span>
+<span class="o">(</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span><span class="o">)</span>
+</pre></div>
+
+
+<p>可以發現 resource 的 initialization 只被執行過一次！原因是因為 descriptor 只有定義 <code>__get__</code>，所以 descriptor 在第一次執行 <code>__get__</code> 的時候，就被 <code>setattr(obj, self.method_name, value)</code> 這行取代了，讓第二次的取值，變成直接拿值，而不是再次執行 <code>__get__</code>。</p>
+<p>這招實在太酷炫了，趕快記下來！</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html" rel="bookmark"
+                           title="Permalink to PyQt 或 PySide Widget 無痛插入 Maya UI">PyQt 或 PySide Widget 無痛插入 Maya UI</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-22T03:00:00+08:00">
+                Published: Tue 22 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/pyqt.html">PyQt</a> <a href="https://badboy99tw.github.io/tag/pyside.html">PySide</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info -->                <p>雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI 架構，該如何是好？！</p>
+<p>為了讓新的 PyQt / PySide Widget 無痛插入舊有的 Maya 工具，可以利用下面這個 function 將 qt widget 轉成 maya widget。</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_maya_widget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">):</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span><span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qtobj</span> <span class="o">=</span> <span class="n">shiboken</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html" rel="bookmark"
+                           title="Permalink to 從 Sublime 傳送 Python Code 到 Maya 執行">從 Sublime 傳送 Python Code 到 Maya 執行</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-03T16:15:00+08:00">
+                Published: Thu 03 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> </p>
+</footer><!-- /.post-info -->                <p>在 Maya 寫 Python 程式的派別不外乎：</p>
+<ul>
+<li>
+<p>Script Editor 派</p>
+<ul>
+<li>打開 Maya 的 Script Editor，直接寫直接跑</li>
+</ul>
+</li>
+<li>
+<p>其他文字編輯器派（vim、sublime、eclipse 等等）</p>
+<ul>
+<li>透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。</li>
+</ul>
+</li>
+</ul>
+<p>如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

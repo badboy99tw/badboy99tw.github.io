@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>盒仔內 ê 時間</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/關於 Python Descriptor 的一個實用範例（lazy operator）.html" rel="bookmark"
+                           title="Permalink to 關於 Python Descriptor 的一個實用範例（lazy operator）">關於 Python Descriptor 的一個實用範例（lazy operator）</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-23T23:07:00+08:00">
+                Published: Wed 23 September 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info -->                <p>最近在看 <a href="http://www.tenlong.com.tw/items/9864340417?item_id=1006942">Mastering Python Design Patterns</a>。看到這個例子很有趣，他延遲了某些運算成本比較高的 member variable 的初始化時間。</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LazyProperty</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method_name</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;function overriden: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;function</span><span class="se">\&#39;</span><span class="s1">s name: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">method_name</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">obj</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">obj …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/關於 Python Descriptor 的一個實用範例（lazy operator）.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/理工人念理工以外書籍的盲點.html" rel="bookmark"
+                           title="Permalink to 理工人念理工以外書籍的盲點">理工人念理工以外書籍的盲點</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-09-06T18:41:00+08:00">
+                Published: Sun 06 September 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/reading.html">Reading</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/taiwan.html">Taiwan</a> <a href="https://badboy99tw.github.io/tag/history.html">History</a> </p>
+</footer><!-- /.post-info -->                <p>最近打算大量閱讀台灣近代史。歷史對我來說其實是個充滿各種<strong>主觀意識</strong>的學問（會這樣想，可能跟我想念歷史的<strong>目的</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>有關），所以在出發前應該要做好心理建設跟<strong>防禦</strong>，避免唸到走火入魔。又剛好在朋友的臉書看到小小書房<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>要開「何謂歷史<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>」的讀書會，二話不說馬上報名！</p>
+<p>第一次參加讀書會，當然要皮繃緊一點！去之前已經將這禮拜的範圍讀過兩三次，想說作者每段的重點應該都有抓到，到那邊應該可以順利討論才對。</p>
+<h2>但書不是這樣念的！</h2>
+<p>經過這次讀書會的<strong>衝擊</strong>，我整理了三點理工人念理工以外書籍時，可以調整的思考方向跟程度<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>，也算是給自己的提醒吧！</p>
+<h2>了解「作者想表達的意思」只是基本</h2>
+<p>理工人太習慣看技術文件或教學，這類文章很強調每段都只能有一個重點，而且要在開頭直接破題（不然看的人會覺得囉嗦）。最好只條列解決方法的步驟，不要太多文字修飾（英文太爛也看不懂）。甚至非常注意整篇文章的結構，彷彿沒有邏輯，這篇文章就沒有意義。</p>
+<p>這樣的訓練下來，導致理工人非常喜歡抓重點。~~還有人會拿這點沾沾自喜。~~這點在工作上或許是個好習慣，但是拿來閱讀卻會錯過很多<strong>更值得討論的字句 …</strong></p>
+                <a class="readmore" href="https://badboy99tw.github.io/理工人念理工以外書籍的盲點.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/在 Mac 上使用 Evernote，如何關掉單、雙引號的自動轉換？.html" rel="bookmark"
+                           title="Permalink to 在 Mac 上使用 Evernote，如何關掉單、雙引號的自動轉換？">在 Mac 上使用 Evernote，如何關掉單、雙引號的自動轉換？</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-07-12T17:22:00+08:00">
+                Published: Sun 12 July 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/macos.html">MacOS</a> <a href="https://badboy99tw.github.io/tag/evernote.html">Evernote</a> </p>
+</footer><!-- /.post-info -->                <p>這一年開始拿 Mac 作為工作機，在使用 Evernote 時常遇到煩人的狀況，就是每當在 Note 輸入雙引號（"），都會被自動換成（“），單引號（'）會被換成（‘）。因為常用的 bash command 會存在 Evernote 裡面，每次從 Evernote 剪下貼到 Terminal 的時候都會執行錯誤，實在覺得~~很靠北~~非常惱人。</p>
+<p>本來以為是 Evernote 雞婆，上網查了一下才發現原來是 Mac 設定的問題，只要把 use smart quotes 關掉就好了。</p>
+<p><code>System Preferences -&gt; Language and Region -&gt; Keyboard preferences -&gt; Text -&gt; Uncheck "use smart quotes"</code></p>
+<h2>Refs …</h2>
+                <a class="readmore" href="https://badboy99tw.github.io/在 Mac 上使用 Evernote，如何關掉單、雙引號的自動轉換？.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！.html" rel="bookmark"
+                           title="Permalink to 使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！">使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-09-24T17:58:00+08:00">
+                Published: Wed 24 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/mayapy.html">mayapy</a> <a href="https://badboy99tw.github.io/tag/mel.html">MEL</a> </p>
+</footer><!-- /.post-info -->                <p>以下是一個會把 mayapy 搞爛的例子。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.standalone</span>
+<span class="n">maya</span><span class="o">.</span><span class="n">standalone</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">loadPlugin</span><span class="p">(</span><span class="s1">&#39;Mayatomr&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<!--more-->
+
+<p>但是神奇的事情來了，只要我有先 import pymel，
+那之後再 load mentalray 就不會讓 mayapy 爛掉，
+所以一定是 pymel 裡面做了什麼事情！</p>
+<p>偷看一下原來是 pymel.internal.startup 裡面有個 initMEL 的 function，
+程式會 source 一些分布在 maya 安裝目錄和 prefs 底下做 startup 的 mel …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/使用 mayapy 如果 crash，可能是 MEL 環境沒有做初始化！.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/安裝 Windows 版 pylint 和 Sublime Pylinter.html" rel="bookmark"
+                           title="Permalink to 安裝 Windows 版 pylint 和 Sublime Pylinter">安裝 Windows 版 pylint 和 Sublime Pylinter</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-01T16:50:00+08:00">
+                Published: Fri 01 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/windows.html">Windows</a> <a href="https://badboy99tw.github.io/tag/pylint.html">Pylint</a> <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> </p>
+</footer><!-- /.post-info -->                <p>最近在整理寫程式的環境，打算使用 Sublime 下的 <a href="https://sublime.wbond.net/packages/Pylinter">Pylinter</a> 和 <a href="https://sublime.wbond.net/packages/Python%20PEP8%20Autoformat">Python PEP8 Autoformat</a> 做程式碼的規範。但因為工作環境已經把 python 執行檔及 modules 分開了，所以預設的安裝方式及設定是無法使用的，Pylinter 會找不到 python 執行檔跟 pylint，只好手動安裝。</p>
+<h2>安裝 pylint / Sublime Pylinter</h2>
+<ol>
+<li>安裝 pylint 和需要用到的 modules<ul>
+<li><a href="https://pypi.python.org/pypi/pylint">pylint</a></li>
+<li><a href="https://pypi.python.org/pypi/logilab-common">logilab-common</a></li>
+<li><a href="https://pypi.python.org/pypi/astroid">astroid</a></li>
+</ul>
+</li>
+<li>安裝 <a href="https://sublime.wbond.net/packages/Pylinter">Pylinter</a></li>
+<li>修改 Pylinter 設定</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python_bin&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/python.exe&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;python_path&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;/path/to/pylint&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/path/to/logilab-common …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/安裝 Windows 版 pylint 和 Sublime Pylinter.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html" rel="bookmark"
+                           title="Permalink to PyQt 或 PySide Widget 無痛插入 Maya UI">PyQt 或 PySide Widget 無痛插入 Maya UI</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-22T03:00:00+08:00">
+                Published: Tue 22 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/pyqt.html">PyQt</a> <a href="https://badboy99tw.github.io/tag/pyside.html">PySide</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info -->                <p>雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI 架構，該如何是好？！</p>
+<p>為了讓新的 PyQt / PySide Widget 無痛插入舊有的 Maya 工具，可以利用下面這個 function 將 qt widget 轉成 maya widget。</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_maya_widget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">):</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span><span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qtobj</span> <span class="o">=</span> <span class="n">shiboken</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/避開 VRay 算大場景連續圖會失敗的問題.html" rel="bookmark"
+                           title="Permalink to 避開 VRay 算大場景連續圖會失敗的問題">避開 VRay 算大場景連續圖會失敗的問題</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-06T10:34:00+08:00">
+                Published: Sun 06 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/vray.html">VRay</a> <a href="https://badboy99tw.github.io/tag/render.html">render</a> </p>
+</footer><!-- /.post-info -->                <p>在 Maya 算圖，如果沒有 Render Farm 的話，只能透過 Maya Render 一張一張慢慢算。</p>
+<p>但是 VRay 這個白癡，算圖的時候會把整個場景先轉成 vrscene 到系統的 temp 再算圖。在簡單場景或張數很少的情況，這作法還算無感，但如果是大場景或超長的卡，可能算個圖要先等個半小時一小時，而且等待的時間可能會讓你覺得 Maya 壞掉而重開機。</p>
+<p>就算你認命了決定等待，但也有可能 temp 爆掉讓 vrscene 產生失敗，最後圖還是算不出來。</p>
+<p>當時同事提供了一個簡單的解法，簡單來說，就是用 maya 的 render command 一張一張算圖，以下是範例：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="kt">int</span> <span class="err">$</span><span class="n">start</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="err">$</span><span class="n">end</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int …</span></pre></div>
+                <a class="readmore" href="https://badboy99tw.github.io/避開 VRay 算大場景連續圖會失敗的問題.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html" rel="bookmark"
+                           title="Permalink to 從 Sublime 傳送 Python Code 到 Maya 執行">從 Sublime 傳送 Python Code 到 Maya 執行</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-03T16:15:00+08:00">
+                Published: Thu 03 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/sublime.html">Sublime</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> </p>
+</footer><!-- /.post-info -->                <p>在 Maya 寫 Python 程式的派別不外乎：</p>
+<ul>
+<li>
+<p>Script Editor 派</p>
+<ul>
+<li>打開 Maya 的 Script Editor，直接寫直接跑</li>
+</ul>
+</li>
+<li>
+<p>其他文字編輯器派（vim、sublime、eclipse 等等）</p>
+<ul>
+<li>透過系統設定修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 Maya.env 修改環境變數 PYTHONPATH，再經由 import/reload module 做測試。</li>
+<li>透過 sys.path 加入工作目錄，再經由 import/reload module 做測試。</li>
+</ul>
+</li>
+</ul>
+<p>如果是使用 Sublime 為主力編輯器的朋友，其實可以透過 MayaSublime …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/從 Sublime 傳送 Python Code 到 Maya 執行.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://badboy99tw.github.io/從 Cygwin 執行 Windows 程式.html" rel="bookmark"
+                           title="Permalink to 從 Cygwin 執行 Windows 程式">從 Cygwin 執行 Windows 程式</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-01T14:58:00+08:00">
+                Published: Tue 01 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/cygwin.html">Cygwin</a> <a href="https://badboy99tw.github.io/tag/windows.html">Windows</a> </p>
+</footer><!-- /.post-info -->                <p>工作了幾年，才漸漸接受自己必須在 Windows 底下做事的事實。</p>
+<p>一開始比較逃避現實的解法是透過 VirtualBox 安裝 Ubuntu，繼續躲在 Linux 溫柔鄉。但現在的工作沒有權限修改 BIOS 來開啟硬體加速的支援，導致 VirtualBox 速度慢到無法接受！寫一個 PyQt 的程式，Widget 居然龜速到一個一個慢慢跳出來！</p>
+<p>只好改變戰略投靠 Cygwin！</p>
+<p>從 Cygwin 執行 Windows 程式其實很簡單，打程式的名稱就好。但如果透過 <a href="http://cygwin-lite.sourceforge.net/html/cygpath.html">cygpath</a> 做路徑轉換，還可以做到無縫接軌！</p>
+<p>以下是我用來執行 explorer 的 wrapper。</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+explorer.exe <span class="s2">&quot;</span><span class="k">$(</span>cygpath -pw <span class="nv">$1</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>這是個非常簡單的 wrapper。從此可以在 Cygwin 無痛開啟資料夾 …</p>
+                <a class="readmore" href="https://badboy99tw.github.io/從 Cygwin 執行 Windows 程式.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+        <a href="https://badboy99tw.github.io/index.html">&#8647;</a>
+        <a href="https://badboy99tw.github.io/index.html">&laquo;</a>
+    Page 2 / 2
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

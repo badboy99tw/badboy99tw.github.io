@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>PyQt 或 PySide Widget 無痛插入 Maya UI</title>
+        <link rel="stylesheet" href="https://badboy99tw.github.io/theme/css/main.css" />
+        <link href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="盒仔內 ê 時間 Atom Feed" />
+        <meta name="description" content="雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://badboy99tw.github.io/">盒仔內 ê 時間</a></h1>
+                <nav><ul>
+                    <li><a href="https://badboy99tw.github.io/category/creation.html">Creation</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/life.html">Life</a></li>
+                    <li class="active"><a href="https://badboy99tw.github.io/category/note.html">Note</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/reading.html">Reading</a></li>
+                    <li><a href="https://badboy99tw.github.io/category/talk.html">Talk</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://badboy99tw.github.io/PyQt 或 PySide Widget 無痛插入 Maya UI.html" rel="bookmark"
+           title="Permalink to PyQt 或 PySide Widget 無痛插入 Maya UI">PyQt 或 PySide Widget 無痛插入 Maya UI</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-07-22T03:00:00+08:00">
+                Published: Tue 22 July 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://badboy99tw.github.io/author/badboy99.html">badboy99</a>
+        </address>
+<p>In <a href="https://badboy99tw.github.io/category/note.html">Note</a>.</p>
+<p>tags: <a href="https://badboy99tw.github.io/tag/maya.html">Maya</a> <a href="https://badboy99tw.github.io/tag/pyqt.html">PyQt</a> <a href="https://badboy99tw.github.io/tag/pyside.html">PySide</a> <a href="https://badboy99tw.github.io/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info -->      <p>雖然用 PyQt / PySide 寫的 Widget 可以爽爽跨平台跟跨軟體，但面對以前使用 maya.cmds 寫的 GUI，如果要全部換成 PyQt / PySide 應該會痛不欲生。若仍想例用 PyQt / PySide 添加新的介面及功能，卻又不打算修改舊有的 GUI 架構，該如何是好？！</p>
+<p>為了讓新的 PyQt / PySide Widget 無痛插入舊有的 Maya 工具，可以利用下面這個 function 將 qt widget 轉成 maya widget。</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_maya_widget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">):</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span><span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qtobj</span> <span class="o">=</span> <span class="n">shiboken</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">mui</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">findLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)),</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QObject</span><span class="p">)</span>
+    <span class="n">qtobj</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">)</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>想法很簡單</p>
+<ol>
+<li>maya.cmds 產生一個之後要拿來塞 Widget 的 layout</li>
+<li>利用 shiboken.wrapInstance / sip.wrapinstance 將 maya layout 轉成 QObject</li>
+<li>從 QObject 取得 qt layout，再透過 addWidget 加入 qt widget 就可以了！</li>
+</ol>
+<p>完整測試程式在此</p>
+<p>測試環境：Mac OSX 10.9.4 + Maya 2015 + PySide + shiboken</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">import</span> <span class="nn">shiboken</span>
+
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="kn">import</span> <span class="nn">maya.OpenMayaUI</span> <span class="k">as</span> <span class="nn">mui</span>
+
+<span class="k">def</span> <span class="nf">to_maya_widget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">):</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span><span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qtobj</span> <span class="o">=</span> <span class="n">shiboken</span><span class="o">.</span><span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">mui</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">findLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)),</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QObject</span><span class="p">)</span>
+    <span class="n">qtobj</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">qt_widget</span><span class="p">)</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pyside_button</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+    <span class="n">btn</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+    <span class="n">to_maya_widget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">maya_press_callback</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="s1">&#39;Hello Maya&#39;</span>
+
+<span class="k">def</span> <span class="nf">pyside_press_callback</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="s1">&#39;Hello PySide&#39;</span>
+
+<span class="n">win</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">main_layout</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span><span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Maya Button&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">maya_press_callback</span><span class="p">)</span>
+<span class="n">pyside_button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;PySide Button&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">pyside_press_callback</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Maya Button 2&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">maya_press_callback</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">showWindow</span><span class="p">()</span>
+</pre></div>
+
+
+<p>從程式碼可以看到，pyside_button 就這樣神不知鬼不覺的混進去了！只要介面再裝扮一下，一切就是那麼自然～</p>
+<p>既然維護舊程式是逃避不了的宿命，那希望這個小程式可以帶來一點光（是說通常重寫比較爽...）</p>
+<h2>Refs</h2>
+<ul>
+<li><a href="http://tech-artists.org/forum/showthread.php?2845-PyQt-Widget-in-Maya-Mel-UI-problem">PyQt Widget in Maya Mel UI problem</a></li>
+<li><a href="http://stackoverflow.com/questions/22331337/how-to-get-maya-main-window-pointer-using-pyside">How to get maya main window pointer using PySide?</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://badboy99tw.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
