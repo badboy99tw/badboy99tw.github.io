@@ -6,6 +6,7 @@ SITENAME = "盒仔內 ê 時間"
 SITEURL = ""
 
 PATH = "content"
+ARTICLE_PATHS = ["posts"]
 
 TIMEZONE = "Asia/Taipei"
 
